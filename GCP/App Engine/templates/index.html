@@ -1,0 +1,69 @@
+<html>
+  <head>
+    <title>Random Restaurant Selector</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <h1 class="text-center">Random Restaurant Selector <span class="badge">GCP v.0.1.0</span></h1>
+    <hr/>
+    <p class="text-center">
+      THIS SITE IS STILL IN DEVELOPMENT<br/>
+      This is a tool to help my family try different restauraunts after they moved to their new apartment.<br/>
+      Support for the city of Austin is on the way!
+    </p>
+    <div class="form-horizontal">
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="selectArea">Select Area</label>
+        <div class="col-md-4">
+          <select id="selectArea" name="selectArea" class="form-control">
+            <option value="Beacon">Beacon</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="selectCuisine">Select Cuisine (optional)</label>
+        <div class="col-md-4">
+          <select id="selectCuisine" name="selectCuisine" class="form-control">
+            <option value="">All</option>
+            <option value="Burgers">Burgers</option>
+            <option value="Burritos">Burritos</option>
+            <option value="Chinese">Chinese</option>
+            <option value="Fast-Food">Fast-Food</option>
+            <option value="Generic">Generic</option>
+            <option value="Italian">Italian</option>
+            <option value="Mediterranean">Mediterranean</option>
+            <option value="Mexican">Mexican</option>
+            <option value="Pizza">Pizza</option>
+            <option value="Sandwiches">Sandwiches</option>
+            <option value="Seafood">Seafood</option>
+            <option value="Steak">Steak</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-4 control-label ui-helper-hidden-accessible" for="singlebutton">Select a Random Restaurant</label>
+        <div class="col-md-4">
+          <button id="submitbutton" onclick="hitApi()" class="btn btn-primary">Select</button>
+        </div>
+      </div>
+    </div>
+    <p id="res" class="text-center"> </p>
+    <p id="loc_ct" class="text-center"><iframe id="loc" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe></p>
+    <script type="text/javascript">
+      hitApi = () => {
+      	$('#res').html('');
+      	$('#loc').attr('src', '');
+        fetch('https://random-restaurant-selector-function.azurewebsites.net/api/HttpTriggerJS1?code=1XwzalAad20W0Q6C5zwoCcr1a4z4wVY3vLtT42ozimDzs6RkzsJNag==&area=' + $('#selectArea').val() + "&cuisine=" + $('#selectCuisine').val()).then((response) => {
+          return response.json();
+        }).then((data) => {
+          $('#loc').attr('src', data.loc_src.split('&#39;').join('\''));
+        }).catch((err) => {
+        	console.error(err);
+        	$('#res').html('Something went wrong.');
+        });
+      }
+    </script>
+  </body>
+</html>
