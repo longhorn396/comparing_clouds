@@ -41,7 +41,7 @@ Cosmos DB is awesome. I went with standard SQL API, but it can be configured for
 
 Making a Function App was overall pretty straightforward. It differs from AWS Lambda in that each app can have more than one function, which I thought was kind of neat. Also unlike AWS, coding and testing are done on the same page, but configuration was not. I was okay with this, however, because the configuration options were no doubt better. I was able to have the results of a Cosmos DB query as a parameter in my JavaScript function (as long as the app was initially set up on a Windows OS). This meant the only thing needed by my code was to filter the results and return one at random, instead of having to query the database like my AWS implementation.
 
-Serving the static HTML was made simple recently StorageV2 (see [here](https://azure.microsoft.com/en-us/blog/azure-storage-static-web-hosting-public-preview/)). It can be set up quickly as well as edited in-browser.
+Serving the static HTML was made simple recently thanks to StorageV2 (see [here](https://azure.microsoft.com/en-us/blog/azure-storage-static-web-hosting-public-preview/)). It can be set up quickly as well as edited in-browser.
 
 ### GCP
 
