@@ -2,9 +2,10 @@
 
 ## Links
 
-[AWS](https://9x6wmuoxc6.execute-api.us-east-1.amazonaws.com/prod/home)
-[Azure](https://randomrestaurantstorage2.z21.web.core.windows.net/)
-[GCP](http://randomrestaurantselector.appspot.com/)
+* [AWS](https://9x6wmuoxc6.execute-api.us-east-1.amazonaws.com/prod/home)
+* ~~[Azure](#)~~
+* ~~[GCP](#)~~
+* I've stopped supporting Azure and GCP
 
 ## Idea
 
